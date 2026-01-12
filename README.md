@@ -2,4 +2,14 @@
 
 
 
-This is a test to make sure this is working
+VRMS Vehicle Rental Management System for use in
+BCDE102 Introduction to Software Engineering Assessment 3 Portfolio.
+
+Create by Ethan Balon
+9 November 2025
+
+All html elements for all sections are in index.html except for specrunner which is seperate html.
+
+To organize the backendcode easier I have decided to seperate the controller, model, view, and css for each section. The files for each section has been named appriopriately.
+
+UML class diagram is located in the portfolio directory aslongside the sourcecode and jasmine testing.

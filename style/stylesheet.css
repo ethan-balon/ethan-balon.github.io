@@ -5,3 +5,21 @@
 .section.active {
     display:block;
 }
+
+.adminButton {
+    display: none;
+}
+.adminButton.active {
+    display: inline-block;
+}
+.userButton {
+    display: none;
+}
+.userButton.active {
+    display: inline-block;
+}
+
+tr, th {
+    border: 1px;
+    font-family: NationalPark;
+}

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+#rental_page {
+    display: none; 
+    padding: 30px;
+    background: #f5f7fa;
+    min-height: 100vh;
+}
+
+#rental_page.active {
+    display: block;
+}
+
+.rental-container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+.rental-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.rental-form label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.rental-form input,
+.rental-form select {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+    font-size: 14px;
+}
+
+.rental-form button {
+    grid-column: span 2;
+    padding: 10px 0;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.rental-form button:hover {
+    background: #0064d4;
+}
+
+.rental-table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+}
+
+table th {
+    background: #f0f3f8;
+    font-weight: 600;
+}
+
+table tr:hover td {
+    background: #fafafa;
+}
+
+
+.rental-return-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.rental-return-btn:hover {
+    background-color: #218838;
+}
+
+.rental-delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.rental-delete-btn:hover {
+    background-color: #c82333;
+}

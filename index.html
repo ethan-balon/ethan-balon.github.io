@@ -5,67 +5,283 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicle Rental System</title>
      <link rel="stylesheet" href="style/stylesheet.css">
+     <link rel="stylesheet" href="css/vehicle.css">
+     <link rel="stylesheet" href="css/loginpage.css">
+     <link rel="stylesheet" href="css/sections.css">
+     <link rel="stylesheet" href="css/customer.css">
+     <link rel="stylesheet" href="css/rental.css">
+     <link rel="stylesheet" href="css/reservation.css">
+     <link rel="stylesheet" href="css/search.css">
 </head>
 <body>
+  <header>
     <h1>Vehicle Rental System</h1>
     <nav>
-        <ul>
-            <button id="customer_button">Customers</button>
-            <button id="vehicle_button">Vehicles</button>
-            <button id="rental_button">Rentals</button>
-            <button id="reservation_button">Reservations</button>
-            <button id="search_vehcle_button">Search Vehicles</button>
+        <ul class="nav-container">
+            <button id="customer_button" class="adminButton">Customers</button>
+            <button id="vehicle_button"  class="adminButton">Vehicles</button>
+            <button id="rental_button"  class="adminButton">Rentals</button>
+
+            <button id="reservation_button"  class="userButton">Reservations</button>
+            <button id="search_vehcle_button" class="userButton">Search Vehicles</button>
+            <button id="login_button" class="userButton">Logout</button>
         </ul>
     </nav>
+</header>
+
 
     <div id=""></div>
 
-
-    <section id="customer_page" class="section active">
+    <section id="login_page" class="section active">
+        <!-- This page is the login page that will be displayed before the other pages can be accessed
+         Due to limited portfolio time there is no password function but I designed it so it can be easily
+         implemented in the future -->
         <div>
-            Customer page
+            <h2>LOGIN PAGE</h2>
+            <img src="https://tse3.mm.bing.net/th/id/OIP.Gbd1r5nJONkp_JSrTsCQjgHaHZ" height="100px">
+            <p>Welcome to VRMS Vehicle Rental Management Systen</p>
+            <button id="logintest">LOGIN</button>
         </div>
     </section>
 
-    <section id="vehicle_page" class="section">
-        <div>
-            Vehicle page
+
+
+<section id="customer_page" class="section">
+    <div class="customer-container">
+
+        <form id="customer_form" class="customer-form">
+            <label>Full name</label>
+            <input id="full_name" type="text" required>
+
+            <label>Email</label>
+            <input id="email" type="email" required>
+
+            <label>Phone Number</label>
+            <input id="phone_number" type="number" required>
+
+            <label>Date</label>
+            <input id="date" type="date" required>
+
+            <button type='submit'>Add customer</button>
+        </form>
+
+        <div class="customer-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Full name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Update status</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTable"></tbody>
+            </table>
         </div>
-    </section>
 
-    <section id="reservation_page" class="section">
-        <div>
-            Reservation page
+    </div>
+</section>
+
+
+
+
+
+
+
+<section id="vehicle_page" class="section">
+    <div class="vehicle-container">
+
+        <form id="vehicle_form">
+            <label>Vehicle ID</label>
+            <input id="vehicle_id" type="text" required>
+
+            <label>Make</label>
+            <input id="make" type="text" required>
+
+            <label>Model</label>
+            <input id="model" type="text" required>
+
+            <label>Year</label>
+            <input id="year" type="number" required>
+
+            <label>Registration Number</label>
+            <input id="registration_number" type="text" required>
+
+            <label>Type</label>
+            <input id="type" type="text" required>
+
+            <label>Mileage</label>
+            <input id="mileage" type="number" required>
+
+            <label>Location</label>
+            <input id="location" type="text" required>
+
+            <button type='submit'>Add vehicle</button>
+        </form>
+
+        <div class="vehicle-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vehicle ID</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Registration Number</th>
+                        <th>Type</th>
+                        <th>Mileage</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Update status</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="vehicleTable"></tbody>
+            </table>
         </div>
-    </section>
 
-    <section id="search_page" class="section">
-        <div>
-            Search page
+    </div>
+</section>
+
+
+
+
+<!-- 
+hello world -->
+
+
+
+<section id="reservation_page" class="section">
+    <div class="reservation-container">
+
+        <form id="reservation_form" class="reservation-form">
+            <label>Customer</label>
+            <select id="reserve_customer" required>
+                <option>test</option>
+                <option>test2</option>
+            </select>
+
+            <label>Vehicle</label>
+            <select id="reserve_vehicle" required>
+            </select>
+
+            <label>Reserve Date</label>
+            <input id="reserve_date" type="date" required>
+
+            <button type='submit'>Add reservation</button>
+        </form>
+
+        <div class="reservation-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Vehicle</th>
+                        <th>Reserve date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="reservationTable"></tbody>
+            </table>
         </div>
-    </section>
 
-    <section id="rental_page" class="section">
-        <div>
-            Rental page
+    </div>
+</section>
+
+
+
+
+<section id="search_page" class="section">
+    <div class="search-container">
+
+        <form id="search_form" class="search-form">
+            <label>Search using Make, Model, Type or Location</label>
+            <input id="search_terms" type="text" required>
+            <button type='submit'>Search</button>
+        </form>
+
+        <div class="search-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vehicle ID</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Registration Number</th>
+                        <th>Type</th>
+                        <th>Mileage</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="searchTable"></tbody>
+            </table>
         </div>
-    </section>
 
-    <script type="module" src="controller/sectionController.js">
-        
-
-    </script>
+    </div>
+</section>
 
 
 
+<section id="rental_page" class="section">
+    <div class="rental-container">
 
-    <!-- <input id="num1" type="number">
-    <input id="num2" type="number">
-    <button id="addition">Add</button>
-    <button id="substraction">Substract</button>
-    <h3 id="result"></h3> -->
+        <form id="rental_form" class="rental-form">
+            <label>Customer</label>
+            <select id="target_customer">
+            </select>
 
-    <!-- <script type="module" src="controller/controller.js"></script> -->
+            <label>Vehicle</label>
+            <select id="target_vehicle">
+            </select>
+
+            <label>Start Date</label>
+            <input id="start_date" type="date">
+
+            <label>End Date</label>
+            <input id="end_date" type="date">
+
+            <label>Total Cost</label>
+            <input id="total_cost" type="number">
+
+            <button type='submit'>Add rental</button>
+        </form>
+
+        <div class="rental-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Vehicle ID</th>
+                        <th>Start date</th>
+                        <th>End date</th>
+                        <th>Total cost</th>
+                        <th>Status</th>
+                        <th>Return</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="rentalTable"></tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+
+    <script type="module" src="controller/sectionController.js"></script>
+    <script type="module" src="controller/customerController.js"></script>
+    <script type="module" src="controller/vehicleController.js"></script>
+    <script type="module" src="controller/rentalController.js"></script>
+    <script type="module" src="controller/reservationController.js"></script>
+    <script type="module" src="controller/searchController.js"></script>
+
+
 </body>
 </html>
 
