@@ -1,0 +1,72 @@
+[
+  {
+    "callsign": "JST239",
+    "country": "Australia",
+    "latitude": -42.3354,
+    "longitude": 172.8159,
+    "altitude": 6210.3
+  },
+  {
+    "callsign": "JST240",
+    "country": "Australia",
+    "latitude": -42.8389,
+    "longitude": 172.8807,
+    "altitude": 7094.22
+  },
+  {
+    "callsign": "ZKMUM",
+    "country": "New Zealand",
+    "latitude": -45.968,
+    "longitude": 170.2894,
+    "altitude": 678.18
+  },
+  {
+    "callsign": "ANZ776M",
+    "country": "New Zealand",
+    "latitude": -41.0699,
+    "longitude": 174.7834,
+    "altitude": 5173.98
+  },
+  {
+    "callsign": "ANZ622M",
+    "country": "New Zealand",
+    "latitude": -37.8922,
+    "longitude": 175.323,
+    "altitude": 236.22
+  },
+  {
+    "callsign": "SDA271",
+    "country": "New Zealand",
+    "latitude": -41.5166,
+    "longitude": 173.8913,
+    "altitude": 182.88
+  },
+  {
+    "callsign": "ANZ161L",
+    "country": "New Zealand",
+    "latitude": -37.0929,
+    "longitude": 174.7415,
+    "altitude": 929.64
+  },
+  {
+    "callsign": "ANZ566",
+    "country": "New Zealand",
+    "latitude": -37.0052,
+    "longitude": 174.811,
+    "altitude": 91.44
+  },
+  {
+    "callsign": "ANZ748M",
+    "country": "New Zealand",
+    "latitude": -45.3888,
+    "longitude": 171.117,
+    "altitude": 5791.2
+  },
+  {
+    "callsign": "ANZ143L",
+    "country": "New Zealand",
+    "latitude": -37.1714,
+    "longitude": 174.8502,
+    "altitude": 1699.26
+  }
+]
