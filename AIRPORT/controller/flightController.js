@@ -6,22 +6,24 @@ class CustomerController {
 
         this.flightModel =  new flightModel()
         this.flightView = new flightView()
-        this.bindUpdateCustomer()
-        this.startbindUpdateCustomer()
+        this.bindUpdateFlights()
+        this.startbindUpdateFlights()
     }
 
-    bindUpdateCustomer(){
+    bindUpdateFlights(){
     const button = document.getElementById("updateButton");
 
     button.addEventListener("click", (e) => {
         e.preventDefault();
+        this.flightModel.fetchEntries()
+        const api_entries = this.flightModel.getEntries()
+        this.flightView.updateTable(api_entries)
         this.flightView.updateClock()
-        this.flightModel.updateTable()
     })
     }
-    startbindUpdateCustomer(){
+    startbindUpdateFlights(){
         this.flightView.updateClock()
-        this.flightModel.updateTable()
+        // this.flightView.updateTable()
     }
 
     

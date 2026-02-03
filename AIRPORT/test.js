@@ -106,38 +106,120 @@
 
 
 
-import fs from "fs";
+// import fs from "fs";
 
-// New Zealand bounding box
-const lamin = -47.5;
-const lamax = -34.0;
-const lomin = 166.0;
-const lomax = 179.0;
 
-const url = `https://opensky-network.org/api/states/all?lamin=${lamin}&lamax=${lamax}&lomin=${lomin}&lomax=${lomax}`;
+// const lamin = -47.5;
+// const lamax = -34.0;
+// const lomin = 166.0;
+// const lomax = 179.0;
 
-fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    if (!data.states) {
-      console.error("No data returned from OpenSky.");
-      return;
-    }
+// const url = `https://opensky-network.org/api/states/all?lamin=${lamin}&lamax=${lamax}&lomin=${lomin}&lomax=${lomax}`;
 
-    const firstTen = data.states.slice(0, 10);
+// fetch(url)
+//   .then(res => res.json())
+//   .then(data => {
+//     if (!data.states) {
+//       console.error("No data returned from OpenSky.");
+//       return;
+//     }
 
-    // Convert raw arrays into clean objects
-    const formatted = firstTen.map(plane => ({
-      callsign: plane[1]?.trim() || "",
-      country: plane[2] || "",
-      latitude: plane[6] || "",
-      longitude: plane[5] || "",
-      altitude: plane[7] || ""
-    }));
+//     const firstTen = data.states.slice(0, 10);
 
-    // Save as pretty JSON
-    fs.writeFileSync("entries.txt", JSON.stringify(formatted, null, 2));
 
-    console.log("Saved 10 entries to entries.txt");
-  })
-  .catch(err => console.error("Fetch error:", err));
+//     // const formatted = firstTen.map(plane => ({
+//     //   callsign: plane[1]?.trim() || "",
+//     //   country: plane[2] || "",
+//     //   latitude: plane[6] || "",
+//     //   longitude: plane[5] || "",
+//     //   altitude: plane[7] || ""
+//     // }));
+
+
+//     fs.writeFileSync("entries.txt", JSON.stringify(firstTen, null, 2));
+
+//     console.log("Saved 10 entries to entries.txt");
+//   })
+//   .catch(err => console.error("Fetch error:", err));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   // NZ bounding box
+// const lamin = -47.5;
+// const lamax = -34.0;
+// const lomin = 166.0;
+// const lomax = 179.0;
+
+// const url = `https://opensky-network.org/api/states/all?lamin=${lamin}&lamax=${lamax}&lomin=${lomin}&lomax=${lomax}`;
+
+// fetch(url)
+//   .then(res => res.json())
+//   .then(data => {
+//     const firstTen = data.states.slice(0, 10);
+
+//     console.log("Callsigns of first 10 planes:");
+
+//     firstTen.forEach((plane, index) => {
+//       // 👇 plane[1] is the callsign
+//       const callsign = plane[1];
+
+//       console.log(`${index + 1}:`, callsign);
+//     });
+//   })
+//   .catch(err => console.error(err));
+
+
+
+
+
+
+
+
+
+
+
+// // New Zealand bounding box
+// const lamin = -47.5;
+// const lamax = -34.0;
+// const lomin = 166.0;
+// const lomax = 179.0;
+
+// const url = `https://opensky-network.org/api/states/all?lamin=${lamin}&lamax=${lamax}&lomin=${lomin}&lomax=${lomax}`;
+
+// fetch(url)
+//   .then(res => res.json())
+//   .then(data => {
+//     if (!data.states) {
+//       console.log("No data returned.");
+//       return;
+//     }
+
+//     const firstTen = data.states.slice(0, 10);
+
+//     // 🔹 Save to localStorage as a string
+//     localStorage.setItem("opensky_raw_entries", JSON.stringify(firstTen));
+
+//     console.log("Saved raw entries to localStorage!");
+//     console.log(firstTen); // still log it too
+//   })
+//   .catch(err => console.error("Error fetching OpenSky data:", err));
