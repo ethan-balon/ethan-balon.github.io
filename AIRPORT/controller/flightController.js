@@ -15,15 +15,17 @@ class CustomerController {
 
     button.addEventListener("click", (e) => {
         e.preventDefault();
-        this.flightModel.fetchEntries()
+        // this.flightModel.fetchEntries()
         const api_entries = this.flightModel.getEntries()
         this.flightView.updateTable(api_entries)
         this.flightView.updateClock()
     })
     }
     startbindUpdateFlights(){
+        // this.flightModel.fetchEntries()
+        const api_entries = this.flightModel.getEntries()
+        this.flightView.updateTable(api_entries)
         this.flightView.updateClock()
-        // this.flightView.updateTable()
     }
 
     

@@ -10,15 +10,15 @@ export class flightModel {
 
         const url = `https://opensky-network.org/api/states/all?lamin=${lamin}&lamax=${lamax}&lomin=${lomin}&lomax=${lomax}`;
 
-        fetch(url)
-        .then(res => res.json())
+        fetch(url) //fetch data from opensky within nz airspace
+        .then(res => res.json()) //convert raw data into json
         .then(data => {
             if (!data.states) {
             console.log("flightModel: No data returned.");
             return;
             }
 
-            const firstTen = data.states.slice(0, 10); //delete all except 10 for testing purpose
+            const firstTen = data.states.slice(0, 10); //FOR TESTING: delete all except 10 for testing purpose
 
             if (localStorage.getItem("api_entries")) {
             localStorage.removeItem("api_entries");
@@ -27,8 +27,7 @@ export class flightModel {
 
             localStorage.setItem("api_entries", JSON.stringify(firstTen));
 
-            console.log("flightModel: Saved raw entries to localStorage");
-            console.log(firstTen); 
+            console.log(`flightModel: Saved raw entries to localStorage`);
         })
         .catch(err => console.error("Error fetching OpenSky data:", err));
 
