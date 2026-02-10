@@ -12,17 +12,21 @@ export class flightView {
 
       const flightTable  = document.getElementById('flightTable');
       let html = ``;
-      for (let i = 0; i < api_entries.length; i++) {
+      html += `<tr><th>API CODE</th><th>CALLSIGN</th><th>COUNTRY</th><th>ALTITUDE</th><th>SPEED</th><th>ARRIVED</th></tr>`
+      for (let i = 0; i < formatted_entries.length; i++) {
+          let target_flight = formatted_entries[i]
+          //make values readable for user
+          let callsign = target_flight[1] ? target_flight[1] : "N/A"; //replace invisible callsign with N/A
+          let altitude = target_flight[7] === null ? "Grounded" : target_flight[7]; //replace null with grounded
+          let arrived = target_flight[8] === true ? "Yes" : "No"; //replace true and false with yes and no
+
           html += `<tr>`;
-          html += `<td>${api_entries[i].vehicleId}</td>`;
-          html += `<td>${api_entries[i].make}</td>`;
-          html += `<td>${api_entries[i].model}</td>`;
-          html += `<td>${api_entries[i].year}</td>`;
-          html += `<td>${api_entries[i].registrationNumber}</td>`;
-          html += `<td>${api_entries[i].type}</td>`;
-          html += `<td>${api_entries[i].mileage}</td>`;
-          html += `<td>${api_entries[i].location}</td>`;
-          html += `<td>${api_entries[i].status}</td>`
+          html += `<td>${target_flight[0]}</td>`;
+          html += `<td>${callsign}</td>`;
+          html += `<td>${target_flight[2]}</td>`; 
+          html += `<td>${altitude}</td>`; 
+          html += `<td>${target_flight[9]}</td>`; 
+          html += `<td>${arrived}</td>`; 
           html += `<td><button class="vehicle-update-btn" data-index="${i}">save</button></td>`;
           html += `<td><button class="vehicle-delete-btn" data-index="${i}">locate</button></td>`;
           html += `</tr>`;
@@ -30,6 +34,29 @@ export class flightView {
       flightTable.innerHTML = html;
     }
 
+
+
+    updateBanner(api_entries){
+      const formatted_entries = JSON.parse(api_entries)
+      console.log('flightView: displaying entries for banner')
+      console.log(formatted_entries)
+      let message = `MESSAGE: These flights have landed.`;
+      let html = ` `
+      let flightBanner  = document.getElementById('flightBanner');
+        for (let i = 0; i < formatted_entries.length; i++) {
+          let target_flight = formatted_entries[i]
+          if (target_flight[8] === true) {
+            html += ` Flight: ${target_flight[1]} from: ${target_flight[2]}`
+          }
+      }
+      if (html === ` `){
+        message = `MESSAGE: No flights have arrived yet!`
+      }
+      flightBanner.textContent = message + html
+      
+    }
+
 }
+
 
 

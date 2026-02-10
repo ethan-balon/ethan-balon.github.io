@@ -18,6 +18,7 @@ class CustomerController {
         // this.flightModel.fetchEntries()
         const api_entries = this.flightModel.getEntries()
         this.flightView.updateTable(api_entries)
+        this.flightView.updateBanner(api_entries)
         this.flightView.updateClock()
     })
     }
