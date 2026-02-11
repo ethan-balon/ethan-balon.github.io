@@ -12,7 +12,7 @@ export class flightView {
 
       const flightTable  = document.getElementById('flightTable');
       let html = ``;
-      html += `<tr><th>API CODE</th><th>CALLSIGN</th><th>COUNTRY</th><th>ALTITUDE</th><th>SPEED</th><th>ARRIVED</th></tr>`
+      html += `<tr><th>CALLSIGN</th><th>COUNTRY</th><th>ALTITUDE</th><th>SPEED</th><th>ARRIVED</th></tr>`
       for (let i = 0; i < formatted_entries.length; i++) {
           let target_flight = formatted_entries[i]
           //make values readable for user
@@ -21,14 +21,13 @@ export class flightView {
           let arrived = target_flight[8] === true ? "Yes" : "No"; //replace true and false with yes and no
 
           html += `<tr>`;
-          html += `<td>${target_flight[0]}</td>`;
           html += `<td>${callsign}</td>`;
           html += `<td>${target_flight[2]}</td>`; 
           html += `<td>${altitude}</td>`; 
           html += `<td>${target_flight[9]}</td>`; 
           html += `<td>${arrived}</td>`; 
           html += `<td><button class="vehicle-update-btn" data-index="${i}">save</button></td>`;
-          html += `<td><button class="vehicle-delete-btn" data-index="${i}">locate</button></td>`;
+          html += `<td><button class="flight-locate-btn" data-index="${i}">locate</button></td>`;
           html += `</tr>`;
       }
       flightTable.innerHTML = html;
@@ -40,17 +39,17 @@ export class flightView {
       const formatted_entries = JSON.parse(api_entries)
       console.log('flightView: displaying entries for banner')
       console.log(formatted_entries)
-      let message = `MESSAGE: These flights have landed.`;
+      let message = `MESSAGE: These flights have landed`;
       let html = ` `
       let flightBanner  = document.getElementById('flightBanner');
         for (let i = 0; i < formatted_entries.length; i++) {
           let target_flight = formatted_entries[i]
           if (target_flight[8] === true) {
-            html += ` Flight: ${target_flight[1]} from: ${target_flight[2]}`
+            html += `, Flight: ${target_flight[1]} from: ${target_flight[2]}`
           }
       }
       if (html === ` `){
-        message = `MESSAGE: No flights have arrived yet!`
+        message = `MESSAGE: No flights have landed yet! Any arriving planes will be displayed on this banner`
       }
       flightBanner.textContent = message + html
       

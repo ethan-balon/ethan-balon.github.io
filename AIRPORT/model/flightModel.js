@@ -1,4 +1,7 @@
 export class flightModel {
+    constructor() {
+        
+    }
 
     fetchEntries(){
 
@@ -35,6 +38,18 @@ export class flightModel {
     getEntries() {
         const api_entries = localStorage.getItem("api_entries")
         return api_entries
+    }
+    getFLightID(target) {
+        //sorry i know this is messy i will fix it later
+        const api_entries = localStorage.getItem("api_entries")
+        const formatted_entries = JSON.parse(api_entries)
+        const targetFlight = formatted_entries[target]
+        const targetID = targetFlight[0]
+        return targetID
+    }
+    locateFlight(targetID) {
+        console.log(`flightModel: Requesting to locate flight ${targetID}`)
+        window.open(`https://map.opensky-network.org/?icao=${targetID}`, "_blank");
     }
 }
 

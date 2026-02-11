@@ -8,29 +8,43 @@ class CustomerController {
         this.flightView = new flightView()
         this.bindUpdateFlights()
         this.startbindUpdateFlights()
+        this.bindLocateFlight()
     }
 
     bindUpdateFlights(){
-    const button = document.getElementById("updateButton");
-
-    button.addEventListener("click", (e) => {
-        e.preventDefault();
+        const button = document.getElementById("updateButton");
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.flightModel.fetchEntries()
+            const api_entries = this.flightModel.getEntries()
+            this.flightView.updateTable(api_entries)
+            this.flightView.updateBanner(api_entries)
+            this.flightView.updateClock()
+        })
+    }
+    startbindUpdateFlights(){
+        //automatic version of updateflight
         // this.flightModel.fetchEntries()
         const api_entries = this.flightModel.getEntries()
         this.flightView.updateTable(api_entries)
         this.flightView.updateBanner(api_entries)
         this.flightView.updateClock()
-    })
     }
-    startbindUpdateFlights(){
-        // this.flightModel.fetchEntries()
-        const api_entries = this.flightModel.getEntries()
-        this.flightView.updateTable(api_entries)
-        this.flightView.updateClock()
+    bindLocateFlight(){
+        //manually reactivate customer status
+        const customerTable = document.getElementById("flightTable");
+        customerTable.addEventListener("click", (e) => {
+            if (e.target.classList.contains("flight-locate-btn")) {
+                const targetindex = e.target.dataset.index
+                const targetID = this.flightModel.getFLightID(targetindex)
+                this.flightModel.locateFlight(targetID)
+            }
+        });
     }
+}
 
     
-}
+
 
 const app = new CustomerController()
 
