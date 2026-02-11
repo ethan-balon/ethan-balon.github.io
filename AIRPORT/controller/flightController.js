@@ -15,6 +15,7 @@ class CustomerController {
         const button = document.getElementById("updateButton");
         button.addEventListener("click", (e) => {
             e.preventDefault();
+            console.log("flightController: Updating flights")
             this.flightModel.fetchEntries()
             const api_entries = this.flightModel.getEntries()
             this.flightView.updateTable(api_entries)
