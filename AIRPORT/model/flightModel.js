@@ -21,14 +21,14 @@ export class flightModel {
             return;
             }
 
-            const firstTen = data.states.slice(0, 10); //FOR TESTING: delete all except 10 for testing purpose
+            const apiEntries = data.states.slice(0, 20); //FOR TESTING: delete all except 10 for testing purpose
 
             if (localStorage.getItem("api_entries")) {
             localStorage.removeItem("api_entries");
             console.log("flightModel: Deleted old entries from localStorage");
             }
 
-            localStorage.setItem("api_entries", JSON.stringify(firstTen));
+            localStorage.setItem("api_entries", JSON.stringify(apiEntries));
 
             console.log(`flightModel: Saved raw entries to localStorage`);
         })

@@ -1,0 +1,11 @@
+table, td {
+  border: 1px solid;
+}
+
+
+body { 
+    font-family: Arial, sans-serif; padding: 20px; 
+}
+.post { 
+    border: 1px solid ; margin-bottom: 1px; 
+}

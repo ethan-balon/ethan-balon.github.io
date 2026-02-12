@@ -16,15 +16,15 @@ export class flightView {
       for (let i = 0; i < formatted_entries.length; i++) {
           let target_flight = formatted_entries[i]
           //make values readable for user
-          let callsign = target_flight[1] ? target_flight[1] : "N/A"; //replace invisible callsign with N/A
+          let callsign = target_flight[1] ? target_flight[1] : "Not Available"; //replace invisible callsign with N/A
           let altitude = target_flight[7] === null ? "Grounded" : target_flight[7]; //replace null with grounded
           let arrived = target_flight[8] === true ? "Yes" : "No"; //replace true and false with yes and no
 
           html += `<tr>`;
           html += `<td>${callsign}</td>`;
           html += `<td>${target_flight[2]}</td>`; 
-          html += `<td>${altitude}</td>`; 
-          html += `<td>${target_flight[9]}</td>`; 
+          html += `<td>${altitude} ft</td>`; 
+          html += `<td>${target_flight[9]} kts</td>`; 
           html += `<td>${arrived}</td>`; 
           html += `<td><button class="vehicle-update-btn" data-index="${i}">save</button></td>`;
           html += `<td><button class="flight-locate-btn" data-index="${i}">locate</button></td>`;
