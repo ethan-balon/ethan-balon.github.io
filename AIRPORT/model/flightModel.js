@@ -5,34 +5,30 @@ export class flightModel {
 
     fetchEntries(){
 
-        // New Zealand location
-        const lamin = -47.5;
-        const lamax = -34.0;
-        const lomin = 166.0;
-        const lomax = 179.0;
+        // coordinates of new zealand
+        const lamin = -47.5
+        const lamax = -34.0
+        const lomin = 166.0
+        const lomax = 179.0
 
+        // build url using nz coordinates
         const url = `https://opensky-network.org/api/states/all?lamin=${lamin}&lamax=${lamax}&lomin=${lomin}&lomax=${lomax}`;
 
         fetch(url) //fetch data from opensky within nz airspace
         .then(res => res.json()) //convert raw data into json
         .then(data => {
-            if (!data.states) {
-            console.log("flightModel: No data returned.");
-            return;
-            }
 
-            const apiEntries = data.states.slice(0, 20); //FOR TESTING: delete all except 10 for testing purpose
+            const apiEntries = data.states.slice(0, 20); //FOR TESTING: will delete all except 20 for testing purpose
 
             if (localStorage.getItem("api_entries")) {
-            localStorage.removeItem("api_entries");
-            console.log("flightModel: Deleted old entries from localStorage");
+            localStorage.removeItem("api_entries")
+            console.log("flightModel: Deleted old entries from localStorage")
             }
 
-            localStorage.setItem("api_entries", JSON.stringify(apiEntries));
-
-            console.log(`flightModel: Saved raw entries to localStorage`);
+            localStorage.setItem("api_entries", JSON.stringify(apiEntries))
+            console.log(`flightModel: Saved new entries to localStorage`)
         })
-        .catch(err => console.error("Error fetching OpenSky data:", err));
+        .catch(err => console.error("Error fetching OpenSky data:", err))
 
     }
     getEntries() {
@@ -48,8 +44,8 @@ export class flightModel {
         return targetID
     }
     locateFlight(targetID) {
-        console.log(`flightModel: Requesting to locate flight ${targetID}`)
-        window.open(`https://map.opensky-network.org/?icao=${targetID}`, "_blank");
+        console.log(`flightModel: Requesting opensky to locate flight ${targetID}`)
+        window.open(`https://map.opensky-network.org/?icao=${targetID}`, "_blank")
     }
 }
 

@@ -1,7 +1,7 @@
 import { flightModel } from "../model/flightModel.js";
 import { flightView } from "../view/flightView.js";
 
-class CustomerController {
+class flightController {
     constructor(){
 
         this.flightModel =  new flightModel()
@@ -25,14 +25,13 @@ class CustomerController {
     }
     startbindUpdateFlights(){
         //automatic version of updateflight
-        // this.flightModel.fetchEntries()
+        // this.flightModel.fetchEntries() //disabled because server overload
         const api_entries = this.flightModel.getEntries()
         this.flightView.updateTable(api_entries)
         this.flightView.updateBanner(api_entries)
         this.flightView.updateClock()
     }
     bindLocateFlight(){
-        //manually reactivate customer status
         const customerTable = document.getElementById("flightTable");
         customerTable.addEventListener("click", (e) => {
             if (e.target.classList.contains("flight-locate-btn")) {
@@ -47,7 +46,7 @@ class CustomerController {
     
 
 
-const app = new CustomerController()
+const app = new flightController()
 
 
 
