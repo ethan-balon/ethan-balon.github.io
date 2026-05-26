@@ -59,7 +59,7 @@ h1 {
     font-size: 2em;
 }
 
-h2, nav > ul > li > button {
+h2 {
     font-size: 1.5em;
     margin-bottom: 1em;
 }
@@ -78,7 +78,7 @@ footer {
 /* COLOUR SCHEME */
 
 header, footer {
-    background-color: #444;
+    background-color: #48531a;
     color: #fff;
 }
 
@@ -86,12 +86,14 @@ main {
     background-color: #e3fafc;
 }
 
-aside {
-    background-color: #fcf6b5;
+
+
+#blank {
+    background-color: #48531a;
 }
 
 nav {
-	background-color: #d1d8da;
+	background-color: #95986b;
 }
 
 nav a {
@@ -121,12 +123,15 @@ nav > ul {
     height: 100%;
 }
 
-nav > ul > li > button {
-    height: 100%;
-}
+
 
 header > img {
-    max-width: 4rem;
+    max-height: 4rem;
+}
+
+#infobar {
+    background-color: #48531a;
+    color: white;
 }
 
 
@@ -164,6 +169,12 @@ header > img {
     display: none; 
 }
 #about_page.active {
+    display: block;
+}
+#introduction_page {
+    display: none; 
+}
+#introduction_page.active {
     display: block;
 }
 
@@ -210,13 +221,27 @@ nav a {
     }
     footer {
 	grid-area: footer;
-
+    }
     #infobar{
         grid-area: infobar;
     }
+
+    #blank{
+        grid-area: blank;
+    }
+
+    nav > ul > li > button {
+    height: 100%;
+    }
+
+    nav > ul > li > button {
+        font-size: 1.5em;
+        margin-bottom: 1em;
+    }
+
 }
     
-}
+
 
 @media screen and (min-width: 70rem) {
     
@@ -224,13 +249,21 @@ nav a {
         display: grid;
         grid-template-columns: 1fr 20rem 4fr 1fr;
 	    grid-template-areas:
-
         ". header nav . "
 		". blank infobar ."
         ". aside main ."
         ". footer footer ."
     }
 
+    aside {
+    background-color: #48531a;
+    color: white;
+    }
+
+    header, footer {
+        background: #95986b;
+        color: black;
+    }
     
 }
 
