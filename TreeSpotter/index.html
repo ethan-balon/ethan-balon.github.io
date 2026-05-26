@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Placeholder page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="https://lh3.googleusercontent.com/d/19qoUhD_Dvdl2HZV6-ExMdQQFcpf3XLdn" alt="TreeSpotter Logo">
+    </header>
+    <nav>
+        <ul>
+            <li><button id="map_button">Map</button></li>
+            <li><button id="tutorial_button">Tutorial</button></li>
+            <li><button id="saved_list_button">My List</button></li>
+            <li><button id="advanced_options_button">Advanced Options</button></li>
+            <li><button id="about_button">About</button></li>
+        </ul>
+    </nav>    
+    
+    
+    <aside>
+        <h2>Search</h2>
+        <form id="treetypediv">
+            <input id="treetypeinput" type="text" placeholder="Type here to search..">
+            <button type="submit">ENTER</button>
+        </form>
+        <h3>Filters</h3>
+        <form id="filters">
+            <input type="radio" id="summer" name="seasonfilter" value="HTML">
+            <label for="summer">Summer</label><br>
+            <input type="radio" id="autumn" name="seasonfilter" value="CSS">
+            <label for="autumn">Autumn</label><br>
+            <input type="radio" id="winter" name="seasonfilter" value="JavaScript">
+            <label for="winter">Winter</label><br>
+            <input type="radio" id="spring" name="seasonfilter" value="JavaScript">
+            <label for="spring">Spring</label><br>
+            <input id="treetypeinput" type="number" placeholder="Enter distance (km)">
+        </form>
+
+        
+    </aside>
+
+    <div id="blank">
+    </div>
+
+    <div id="infobar">
+        <h3>Hello world</h3>
+    </div>
+
+    <main>
+
+	<section id="map_page" class="section active">
+        <p>map page</p>
+    </section>
+    
+    <section id="saved_list_page" class="section">
+        <p>saved list page</p>
+    </section>
+    
+    <section id="advanced_options_page" class="section">
+        <p>advanced settings page</p>
+    </section>
+    
+    <section id="tutorial_page" class="section">
+        <p>tutorial page</p>
+    </section>
+
+    <section id="about_page" class="section">
+        <p>about page</p>
+    </section>
+
+    </main>
+    
+    <footer>
+        <p>Created for Ara, edited by Ethan Balon, 2026.</p>
+    </footer>
+
+
+    <script type="module" src="controllers/sectionController.js"></script>
+</body>
+</html>

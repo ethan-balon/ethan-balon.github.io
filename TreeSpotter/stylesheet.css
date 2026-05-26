@@ -1,0 +1,210 @@
+/*
+ 
+   !!!!! READ ALL THE COMMENTS IN THIS STYLESHEET !!!!!
+
+   
+   This stylesheet shows a simple layout change from a single-column to two columns
+   when the viewport (window) is wide enough to fit two columns. Notice that the
+   layout code for the single column occurs first and is not in a media query - 
+   this makes the single column the 'default' layout. This is a good approach
+   because older browsers that don't understand media queries can still display
+   the single-column layout. At the bottom of this stylesheet there is a media 
+   query that tests the width of the viewport and contains the grid layout.
+   
+   Check what happens when you change the width of the browser window from very
+   narrow to very wide when you are viewing the web page. */
+   
+
+/* RESET */
+
+/* Cancel out some differences between browser defaults */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, a, article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+ 
+* {
+    box-sizing: border-box;
+}
+
+
+/* LAYOUT */
+
+/* The default layout (before any media queries take effect) is a single-column
+   layout with the principal structural elements as blocks in normal flow. That
+   is: the header, main, and aside are allowed to take their normal positions
+   one after the other down the window. We don't need a grid or other layout CSS
+   for this - it is default behaviour. */
+   
+header, main, aside, footer, nav {
+    padding: 1em;
+}
+
+
+
+
+/* TYPOGRAPHY */
+
+body {
+    font-family: Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+h1, h2 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2, nav > ul > li > button {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+
+p {
+    margin-bottom: 1em;
+}
+
+footer {
+    text-align: center;
+}
+
+
+
+/* COLOUR SCHEME */
+
+header, footer {
+    background-color: #444;
+    color: #fff;
+}
+
+main {
+    background-color: #e3fafc;
+}
+
+aside {
+    background-color: #fcf6b5;
+}
+
+nav {
+	background-color: #d1d8da;
+}
+
+nav a {
+    color: #000000;
+}
+
+.active, a:hover {
+    color: #ff0000;
+}
+
+/* IMAGES */
+
+img {
+    /* Images are forced to fit the size of the parent box (element) they are in. */
+    width: 100%;
+}
+
+
+nav {
+    width: 100%;
+    height: 100%;
+}
+
+nav > ul {
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+nav > ul > li > button {
+    height: 100%;
+}
+
+header > img {
+    max-width: 4rem;
+}
+
+
+
+/* NAVIGATION */
+
+nav ul {
+    list-style-type: none;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+
+
+@media screen and (min-width: 54rem) {
+    
+    body {
+
+        display: grid;
+        grid-template-columns: 20rem 4fr;
+	    grid-template-areas:
+
+        "header nav "
+        "blank infobar"
+		"aside main"
+        "footer footer"
+    }
+
+    header {
+	grid-area: header;
+    }
+
+	nav{
+		grid-area: nav;
+	}
+    main {
+        grid-area: main;
+    }
+ 
+    aside {
+        grid-area: aside;
+    }
+    footer {
+	grid-area: footer;
+
+    #infobar{
+        grid-area: infobar;
+    }
+}
+    
+}
+
+@media screen and (min-width: 70rem) {
+    
+    body {
+        display: grid;
+        grid-template-columns: 20rem 4fr;
+	    grid-template-areas:
+
+        "header nav "
+		"blank infobar"
+        "aside main"
+        "footer footer"
+    }
+
+    
+}
+
+
+
+
+
+
+/* This is the end of the media query. Note how it is just like a CSS rule,
+      but that it contains other CSS rules. It is the same as an IF statement
+      in programming. When the result of the media query is true, all the CSS
+      inside the media query is applied by the browser. When the result of the
+      media query is false (i.e., a viewport that is narrower than 50rem) the
+      browser ignores all the CSS ruls inside the media query. */
