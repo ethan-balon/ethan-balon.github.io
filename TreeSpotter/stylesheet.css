@@ -178,6 +178,12 @@ header > img {
     display: block;
 }
 
+#blank_aside, #map_aside, #saved_list_aside, #tutorial_aside, #about_aside {
+    display: none; 
+}
+#blank_aside.active, #map_aside.active, #saved_list_aside.active, #tutorial_aside.active, #about_aside.active {
+    display: block;
+}
 
 /* NAVIGATION */
 

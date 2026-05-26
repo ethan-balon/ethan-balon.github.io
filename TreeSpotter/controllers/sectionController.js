@@ -20,28 +20,45 @@ class sectionController {
         }   
     }
 
+    //replace the current aside with the required aside
+    refresh_aside(asideName) {
+        const sections = document.querySelectorAll(".asidesection")
+            for (let i=0; i<sections.length; i++){
+                if (sections[i].id === asideName){
+                    sections[i].classList.add("active")
+                }else{
+                    sections[i].classList.remove("active")
+                }
+            }   
+    }
+
     //enables functionality of section buttons
     bindSection() {
         const [mapButton, tutorialButton, savedListButton, aboutButton, advancedOptionsButton, introductionClose, introductionDSA, introductionTutorial] = this.SectionView.get_values()
 
         mapButton.onclick = ()=> {
             this.refresh_page('map_page')
+            this.refresh_aside('map_aside')
         }
 
         tutorialButton.onclick = ()=> {
             this.refresh_page('tutorial_page')
+            this.refresh_aside('tutorial_aside')
         }
 
         savedListButton.onclick = ()=> {
             this.refresh_page('saved_list_page')
+            this.refresh_aside('saved_list_aside')
         }
 
         aboutButton.onclick = ()=> {
             this.refresh_page('about_page')
+            this.refresh_aside('about_aside')
         }
 
         advancedOptionsButton.onclick = ()=> {
             this.refresh_page('advanced_options_page')
+            this.refresh_aside('advanced_options_aside')
         }
 
 
