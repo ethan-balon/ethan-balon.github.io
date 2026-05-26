@@ -98,9 +98,9 @@ nav a {
     color: #000000;
 }
 
-.active, a:hover {
+/* .active, a:hover {
     color: #ff0000;
-}
+} */
 
 /* IMAGES */
 
@@ -129,6 +129,43 @@ header > img {
     max-width: 4rem;
 }
 
+
+
+/* INTERACTIVE PAGES */
+
+#map_page {
+    display: none; 
+    /* padding: 30px;
+    background: #f5f7fa;
+    min-height: 100vh; */
+}
+#map_page.active {
+    display: block;
+}
+#tutorial_page {
+    display: none; 
+}
+#tutorial_page.active {
+    display: block;
+}
+#saved_list_page {
+    display: none; 
+}
+#saved_list_page.active {
+    display: block;
+}
+#advanced_options_page {
+    display: none; 
+}
+#advanced_options_page.active {
+    display: block;
+}
+#about_page {
+    display: none; 
+}
+#about_page.active {
+    display: block;
+}
 
 
 /* NAVIGATION */
@@ -185,13 +222,13 @@ nav a {
     
     body {
         display: grid;
-        grid-template-columns: 20rem 4fr;
+        grid-template-columns: 1fr 20rem 4fr 1fr;
 	    grid-template-areas:
 
-        "header nav "
-		"blank infobar"
-        "aside main"
-        "footer footer"
+        ". header nav . "
+		". blank infobar ."
+        ". aside main ."
+        ". footer footer ."
     }
 
     
