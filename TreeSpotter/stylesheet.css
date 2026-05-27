@@ -129,10 +129,12 @@ header > img {
     max-height: 4rem;
 }
 
-#infobar {
+
+
+aside {
     background-color: #48531a;
     color: white;
-}
+    }
 
 
 
@@ -198,7 +200,10 @@ nav a {
 
 
 @media screen and (min-width: 54rem) {
-    
+    #infobar {
+    background-color: #48531a;
+    color: white;
+}
     body {
 
         display: grid;
@@ -245,15 +250,21 @@ nav a {
         margin-bottom: 1em;
     }
 
+    
+
+    header, footer {
+        background: #95986b;
+        color: black;
+    }
 }
     
 
 
-@media screen and (min-width: 70rem) {
+@media screen and (min-width: 82rem) {
     
     body {
         display: grid;
-        grid-template-columns: 1fr 20rem 4fr 1fr;
+        grid-template-columns: 1fr 20rem 60rem 1fr;
 	    grid-template-areas:
         ". header nav . "
 		". blank infobar ."
@@ -261,15 +272,9 @@ nav a {
         ". footer footer ."
     }
 
-    aside {
-    background-color: #48531a;
-    color: white;
-    }
 
-    header, footer {
-        background: #95986b;
-        color: black;
-    }
+
+    
     
 }
 
