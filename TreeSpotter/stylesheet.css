@@ -83,7 +83,7 @@ header, footer {
 }
 
 main {
-    background-color: #e3fafc;
+    background-color: white;
 }
 
 
@@ -140,50 +140,37 @@ aside {
 
 /* INTERACTIVE PAGES */
 
-#map_page {
-    display: none; 
-    /* padding: 30px;
-    background: #f5f7fa;
-    min-height: 100vh; */
-}
-#map_page.active {
-    display: block;
-}
-#tutorial_page {
-    display: none; 
-}
-#tutorial_page.active {
-    display: block;
-}
-#saved_list_page {
-    display: none; 
-}
-#saved_list_page.active {
-    display: block;
-}
-#advanced_options_page {
-    display: none; 
-}
-#advanced_options_page.active {
-    display: block;
-}
-#about_page {
-    display: none; 
-}
-#about_page.active {
-    display: block;
-}
+#map_page,
+#tutorial_page,
+#saved_list_page,
+#advanced_options_page,
+#about_page,
 #introduction_page {
-    display: none; 
+    display: none;
 }
+
+#map_page.active,
+#tutorial_page.active,
+#saved_list_page.active,
+#advanced_options_page.active,
+#about_page.active,
 #introduction_page.active {
     display: block;
 }
 
-#blank_aside, #map_aside, #saved_list_aside, #tutorial_aside, #about_aside {
-    display: none; 
+#blank_aside,
+#map_aside,
+#saved_list_aside,
+#tutorial_aside,
+#about_aside {
+    display: none;
 }
-#blank_aside.active, #map_aside.active, #saved_list_aside.active, #tutorial_aside.active, #about_aside.active {
+
+#blank_aside.active,
+#map_aside.active,
+#saved_list_aside.active,
+#tutorial_aside.active,
+#about_aside.active {
     display: block;
 }
 
@@ -196,6 +183,10 @@ nav ul {
 nav a {
     text-decoration: none;
 }
+
+
+/* MAP */
+#map { height: 32em; width: 100%; }
 
 
 
