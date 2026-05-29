@@ -6,10 +6,15 @@ class sectionController {
         this.SectionView = new SectionView()
         const introductionChecker = localStorage.getItem("introductionChecker")
         this.introductionChecker = introductionChecker
+        this.infoBarText = this.SectionView.get_infobar()
+    }
+
+    refreshInfoBar(text) {
+        this.infoBarText.textContent = text
     }
 
     //replace the current page with the required page
-    refresh_page(pageName) {
+    refreshPage(pageName) {
     const sections = document.querySelectorAll(".section")
         for (let i=0; i<sections.length; i++){
             if (sections[i].id === pageName){
@@ -17,11 +22,11 @@ class sectionController {
             }else{
                 sections[i].classList.remove("active")
             }
-        }   
+        }
     }
 
     //replace the current aside with the required aside
-    refresh_aside(asideName) {
+    refreshAside(asideName) {
         const sections = document.querySelectorAll(".asidesection")
             for (let i=0; i<sections.length; i++){
                 if (sections[i].id === asideName){
@@ -32,48 +37,62 @@ class sectionController {
             }   
     }
 
+    changeScreen(pageName) {
+        this.refreshPage(pageName + '_page')
+        this.refreshAside(pageName + '_aside')
+        //default infobartext
+        if (pageName === "map") {
+            this.refreshInfoBar("Type on the search bar to search for a tree, or press enter to display all trees in your area.")
+        }
+        else if (pageName === "tutorial") {
+            this.refreshInfoBar("Click on the video to play the full tutorial, or use the chapters on the left side menu")
+        }
+        else if (pageName === "saved_list") {
+            this.refreshInfoBar("Type on the search bar to filter the list results")
+        }
+        else{
+            this.refreshInfoBar()
+        }
+    }
+
     //enables functionality of section buttons
     bindSection() {
         const [mapButton, tutorialButton, savedListButton, aboutButton, advancedOptionsButton, introductionClose, introductionDSA, introductionTutorial] = this.SectionView.get_values()
 
+        
         mapButton.onclick = ()=> {
-            this.refresh_page('map_page')
-            this.refresh_aside('map_aside')
+            this.changeScreen("map")
         }
 
         tutorialButton.onclick = ()=> {
-            this.refresh_page('tutorial_page')
-            this.refresh_aside('tutorial_aside')
+            this.changeScreen("tutorial")
         }
 
         savedListButton.onclick = ()=> {
-            this.refresh_page('saved_list_page')
-            this.refresh_aside('saved_list_aside')
+            this.changeScreen("saved_list")
         }
 
         aboutButton.onclick = ()=> {
-            this.refresh_page('about_page')
-            this.refresh_aside('about_aside')
+            this.changeScreen("about")
         }
 
         advancedOptionsButton.onclick = ()=> {
-            this.refresh_page('advanced_options_page')
-            this.refresh_aside('advanced_options_aside')
+            this.changeScreen("advanced_options")
         }
 
 
         //BUTTONS ON INTRODUCTION PAGE
         introductionClose.onclick = ()=> {
-            this.refresh_page('map_page')
+            this.changeScreen("map")
         }
         
         introductionDSA.onclick = ()=> {
             localStorage.setItem("introductionChecker", true)
-            this.refresh_page('map_page')
+            this.changeScreen("map")
         }
 
         introductionTutorial.onclick = ()=> {
-            this.refresh_page('tutorial_page')
+            this.changeScreen("tutorial")
         }
     }
 
@@ -82,9 +101,9 @@ class sectionController {
     //determines what should be the initial page displayed to the user depending on previous settings
     intialPage() {
         if (this.introductionChecker) {
-            this.refresh_page('map_page')
+            this.changeScreen("map")
         }else{
-            this.refresh_page('introduction_page')
+            this.changeScreen("introduction")
         }
     }
 }

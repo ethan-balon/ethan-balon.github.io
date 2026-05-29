@@ -10,4 +10,9 @@ export class SectionView {
         let introduction_tutorial = document.getElementById('introduction_tutorial')
         return [map_button, tutorial_button, saved_list_button, about_button, advanced_options_button, introduction_close, introduction_dsa, introduction_tutorial]
     }
+
+    get_infobar() {
+        let infobar_text = document.getElementById('infobar_text')
+        return infobar_text
+    }
 }
