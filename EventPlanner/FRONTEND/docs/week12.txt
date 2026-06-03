@@ -1,0 +1,4 @@
+Week 12 baseline check
+20/05/2026 9:35AM
+App is fully functional after zipping and unzipping in onedrive.
+Manifest displays name and shortname, all icons and other resources present.
