@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Placeholder page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,9 @@
 
     <!-- LEAFLET -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
+
 <body>
     <header>
         <img src="https://lh3.googleusercontent.com/d/19qoUhD_Dvdl2HZV6-ExMdQQFcpf3XLdn" alt="TreeSpotter Logo">
@@ -22,9 +23,9 @@
             <li><button id="advanced_options_button">Advanced Options</button></li>
             <li><button id="about_button">About</button></li>
         </ul>
-    </nav>    
-    
-    
+    </nav>
+
+
     <aside>
         <section id="blank_aside" class="asidesection active">
 
@@ -56,12 +57,15 @@
 
         <section id="tutorial_aside" class="asidesection">
             <h1>Chapters</h1>
+            <button class="chapter-btn" data-time="60">1 Minute Mark</button>
+            <button class="chapter-btn" data-time="120">2 Minute Mark</button>
+            <button class="chapter-btn" data-time="180">3 Minute Mark</button>
         </section>
 
         <section id="about_aside" class="asidesection">
             <p>about list aside</p>
         </section>
-        
+
     </aside>
 
     <div id="blank">
@@ -73,62 +77,64 @@
 
     <main>
 
-	<section id="introduction_page" class="section active">
-        <h1>Welcome!</h1>
-        <p>Type on the left search bar to search for a tree, or click enter to display all trees in your area.</p>
-        <p>Click the tutorial button to watch a video tutorial to help you learn how to use this app.</p>
-        <p>You may go back to the tutorial from the top menu bar at any time!</p>
-        <button id="introduction_tutorial">Tutorial</button>
-        <button id="introduction_close">Close</button>
-        <button id="introduction_dsa">Don't show again</button>
-    </section>
+        <section id="introduction_page" class="section active">
+            <h1>Welcome!</h1>
+            <p>Type on the left search bar to search for a tree, or click enter to display all trees in your area.</p>
+            <p>Click the tutorial button to watch a video tutorial to help you learn how to use this app.</p>
+            <p>You may go back to the tutorial from the top menu bar at any time!</p>
+            <button id="introduction_tutorial">Tutorial</button>
+            <button id="introduction_close">Close</button>
+            <button id="introduction_dsa">Don't show again</button>
+        </section>
 
-    <section id="map_page" class="section">
-        <div id="map"></div>
+        <section id="map_page" class="section">
+            <div id="map"></div>
 
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    
-        <script>
-            // Initialize the map and set its view to Christchurch
-            const map = L.map('map').setView([-43.5320, 172.6362], 13);
+            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-            // Load the OpenStreetMap tiles
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }).addTo(map);
-        </script>
-    </section>
-    
-    <section id="saved_list_page" class="section">
-        <p>saved list page</p>
-    </section>
-    
-    <section id="advanced_options_page" class="section">
-        <p>advanced settings page</p>
-    </section>
-    
-    <section id="tutorial_page" class="section">
-        <video controls width="100%">
-            <source src="https://ethanbalon.link/DEMOMESA.webm" type="video/webm">
-            <track src="/media/DEMOMESA.vtt" kind="subtitles" srclang="en" label="English">
-            Your browser does not support the video tag.
-        </video>
-    </section>
+            <script>
+                // Initialize the map and set its view to Christchurch
+                const map = L.map('map').setView([-43.5320, 172.6362], 13);
+
+                // Load the OpenStreetMap tiles
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+            </script>
+        </section>
+
+        <section id="saved_list_page" class="section">
+            <p>saved list page</p>
+        </section>
+
+        <section id="advanced_options_page" class="section">
+            <p>advanced settings page</p>
+        </section>
+
+        <section id="tutorial_page" class="section">
+            <video id="tutorial_video" controls width="100%">
+                <source src="https://ethanbalon.link/DEMOMESA.webm" type="video/webm">
+                <track src="media/DEMOMESA.vtt" kind="subtitles" srclang="en" label="English">
+                Your browser does not support the video tag.
+            </video>
+        </section>
 
 
 
-    <section id="about_page" class="section">
-        <p>about page</p>
-    </section>
+        <section id="about_page" class="section">
+            <p>about page</p>
+        </section>
 
     </main>
-    
+
     <footer>
-        <p>Created for Ara, edited by Ethan Balon, 2026.</p>
+        <p>©2026 TreeSpotter Web Application. Licensed under CC BY-SA 4.0. All Rights Reserved.</p>
     </footer>
 
 
     <script type="module" src="controllers/sectionController.js"></script>
 </body>
+
 </html>
