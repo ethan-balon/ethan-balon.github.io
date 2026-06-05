@@ -13,17 +13,59 @@
    
    Check what happens when you change the width of the browser window from very
    narrow to very wide when you are viewing the web page. */
-   
+
 
 /* RESET */
 
 /* Cancel out some differences between browser defaults */
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, a, article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+img,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+a,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
     margin: 0;
     padding: 0;
     border: 0;
 }
- 
+
 * {
     box-sizing: border-box;
 }
@@ -36,8 +78,12 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, f
    is: the header, main, and aside are allowed to take their normal positions
    one after the other down the window. We don't need a grid or other layout CSS
    for this - it is default behaviour. */
-   
-header, main, aside, footer, nav {
+
+header,
+main,
+aside,
+footer,
+nav {
     padding: 1em;
 }
 
@@ -51,7 +97,8 @@ body {
     line-height: 1.5;
 }
 
-h1, h2 {
+h1,
+h2 {
     font-weight: bold;
 }
 
@@ -77,7 +124,8 @@ footer {
 
 /* COLOUR SCHEME */
 
-header, footer {
+header,
+footer {
     background-color: #48531a;
     color: #fff;
 }
@@ -93,7 +141,7 @@ main {
 }
 
 nav {
-	background-color: #95986b;
+    background-color: #95986b;
 }
 
 nav a {
@@ -117,7 +165,7 @@ nav {
     height: 100%;
 }
 
-nav > ul {
+nav>ul {
     display: flex;
     justify-content: space-evenly;
     height: 100%;
@@ -125,7 +173,7 @@ nav > ul {
 
 
 
-header > img {
+header>img {
     max-height: 4rem;
 }
 
@@ -134,7 +182,7 @@ header > img {
 aside {
     background-color: #48531a;
     color: white;
-    }
+}
 
 
 
@@ -186,87 +234,107 @@ nav a {
 
 
 /* MAP */
-#map { height: 32em; width: 100%; }
+#map {
+    height: 32em;
+    width: 100%;
+}
 
 
 
 @media screen and (min-width: 54rem) {
-    #infobar {
-    background-color: #48531a;
-    color: white;
-}
-    body {
 
+    html,
+    body {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    #infobar {
+        background-color: #48531a;
+        color: white;
+    }
+
+    body {
         display: grid;
         grid-template-columns: 20rem 4fr;
-	    grid-template-areas:
-
-        "header nav "
-        "blank infobar"
-		"aside main"
-        "footer footer"
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+            "header nav "
+            "blank infobar"
+            "aside main"
+            "footer footer";
     }
 
     header {
-	grid-area: header;
+        grid-area: header;
     }
 
-	nav{
-		grid-area: nav;
-	}
+    nav {
+        grid-area: nav;
+    }
+
     main {
         grid-area: main;
+        height: 100%;
+        overflow-y: auto;
     }
- 
+
     aside {
         grid-area: aside;
+        overflow-y: auto;
     }
+
     footer {
-	grid-area: footer;
+        grid-area: footer;
     }
-    #infobar{
+
+    #infobar {
         grid-area: infobar;
     }
 
-    #blank{
+    #blank {
         grid-area: blank;
     }
 
-    nav > ul > li > button {
-    height: 100%;
+    .section.active {
+        height: 100%;
     }
 
-    nav > ul > li > button {
+    #map {
+        height: 100%;
+    }
+
+    nav>ul>li>button {
+        height: 100%;
         font-size: 1.5em;
         margin-bottom: 1em;
     }
 
-    
-
-    header, footer {
+    header,
+    footer {
         background: #95986b;
         color: black;
     }
 }
-    
+
 
 
 @media screen and (min-width: 82rem) {
-    
+
     body {
         display: grid;
         grid-template-columns: 1fr 20rem 60rem 1fr;
-	    grid-template-areas:
-        ". header nav . "
-		". blank infobar ."
-        ". aside main ."
-        ". footer footer ."
+        grid-template-areas:
+            ". header nav . "
+            ". blank infobar ."
+            ". aside main ."
+            ". footer footer ."
     }
 
 
 
-    
-    
+
+
 }
 
 
