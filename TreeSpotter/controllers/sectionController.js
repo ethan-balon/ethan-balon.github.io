@@ -1,11 +1,13 @@
 import { SectionView } from "../views/sectionView.js";
 import { TutorialController } from "./tutorialController.js";
+import { MapController } from "./mapController.js";
 
 
 export class sectionController {
     constructor() {
         this.SectionView = new SectionView()
         this.tutorialController = new TutorialController()
+        this.mapController = new MapController()
         const introductionChecker = localStorage.getItem("introductionChecker")
         this.introductionChecker = introductionChecker
         this.infoBarText = this.SectionView.get_infobar()

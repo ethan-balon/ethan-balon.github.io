@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>Placeholder page</title>
+    <title>TreeSpotter - Fruit Tree Locator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
 
     <!-- LEAFLET -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -32,23 +34,40 @@
         </section>
 
         <section id="map_aside" class="asidesection">
-            <h2>Search</h2>
-            <form id="treetypediv">
-                <input id="treetypeinput" type="text" placeholder="Type here to search..">
-                <button type="submit">ENTER</button>
-            </form>
-            <h3>Filters</h3>
-            <form id="filters">
-                <input type="radio" id="summer" name="seasonfilter" value="HTML">
-                <label for="summer">Summer</label><br>
-                <input type="radio" id="autumn" name="seasonfilter" value="CSS">
-                <label for="autumn">Autumn</label><br>
-                <input type="radio" id="winter" name="seasonfilter" value="JavaScript">
-                <label for="winter">Winter</label><br>
-                <input type="radio" id="spring" name="seasonfilter" value="JavaScript">
-                <label for="spring">Spring</label><br>
-                <input id="treetypeinput" type="number" placeholder="Enter distance (km)">
-            </form>
+
+            <section id="map_search_section" class="map_aside_section active">
+                <h2>Search</h2>
+                <form id="treetypediv">
+                    <input id="treetypeinput" type="text" placeholder="Type here to search..">
+                    <button type="submit">ENTER</button>
+                </form>
+                <h3>Filters</h3>
+                <form id="filters">
+                    <input type="radio" id="summer" name="seasonfilter" value="HTML">
+                    <label for="summer">Summer</label><br>
+                    <input type="radio" id="autumn" name="seasonfilter" value="CSS">
+                    <label for="autumn">Autumn</label><br>
+                    <input type="radio" id="winter" name="seasonfilter" value="JavaScript">
+                    <label for="winter">Winter</label><br>
+                    <input type="radio" id="spring" name="seasonfilter" value="JavaScript">
+                    <label for="spring">Spring</label><br>
+                    <input id="distanceinput" type="number" placeholder="Enter distance (km)">
+                </form>
+            </section>
+
+            <section id="map_results_section" class="map_aside_section">
+                <h2>Search Results</h2>
+                <ul id="map_results_list"></ul>
+                <button id="results_back_button">Back to Search</button>
+            </section>
+
+            <section id="map_details_section" class="map_aside_section">
+                <h2>Tree Details</h2>
+                <div id="tree_details_container"></div>
+                <button id="details_back_button">Back to Results</button>
+            </section>
+
+
         </section>
 
         <section id="saved_list_aside" class="asidesection">
@@ -82,6 +101,7 @@
             <p>Type on the left search bar to search for a tree, or click enter to display all trees in your area.</p>
             <p>Click the tutorial button to watch a video tutorial to help you learn how to use this app.</p>
             <p>You may go back to the tutorial from the top menu bar at any time!</p>
+            <p>Note: TreeSpotter is still in the BETA development phase, some features may not be operational at the moment.</p>
             <button id="introduction_tutorial">Tutorial</button>
             <button id="introduction_close">Close</button>
             <button id="introduction_dsa">Don't show again</button>
@@ -89,20 +109,6 @@
 
         <section id="map_page" class="section">
             <div id="map"></div>
-
-            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-            <script>
-                // Initialize the map and set its view to Christchurch
-                const map = L.map('map').setView([-43.5320, 172.6362], 13);
-
-                // Load the OpenStreetMap tiles
-                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 19,
-                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                }).addTo(map);
-            </script>
         </section>
 
         <section id="saved_list_page" class="section">

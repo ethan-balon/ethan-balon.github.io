@@ -6,9 +6,9 @@ const SEASONALITY_MAP = {
     "APRICOT": "Summer"
 };
 
-const FRUIT_KEYWORDS = [
-    "PLUM", "APPLE", "PEAR", "WALNUT", "CHESTNUT", "OLIVE", "PEACH", 
-    "APRICOT", "HAZEL", "MULBERRY", "LOQUAT", "QUINCE", "ALMOND", 
+export const FRUIT_KEYWORDS = [
+    "PLUM", "APPLE", "PEAR", "WALNUT", "CHESTNUT", "OLIVE", "PEACH",
+    "APRICOT", "HAZEL", "MULBERRY", "LOQUAT", "QUINCE", "ALMOND",
     "CHERRY", "ELDERBERRY", "FIG", "FEIJOA", "CITRUS", "LEMON", "ORANGE",
     "STRAWBERRY TREE", "HONEY LOCUST", "SWEET BAY", "JUNIPER", "MACADAMIA"
 ];
@@ -42,20 +42,10 @@ export class DataController {
      * @param {number|string} treeId 
      * @returns {number}
      */
+    //placeholder as stock level data is currently unfetchable
     calculateStockLevel(treeId) {
-        const idNum = parseInt(treeId, 10);
-        if (isNaN(idNum)) {
-            // Fallback hashing for non-numeric IDs
-            let hash = 0;
-            const idStr = String(treeId);
-            for (let i = 0; i < idStr.length; i++) {
-                hash = (hash << 5) - hash + idStr.charCodeAt(i);
-                hash |= 0;
-            }
-            return Math.abs(hash % 15) + 1;
-        }
-        // Pseudo-random formula that stays constant for the same numeric ID
-        return Math.abs((idNum * 9301 + 49297) % 233280) % 15 + 1;
+
+        return "Unknown";
     }
 
     /**
@@ -65,7 +55,7 @@ export class DataController {
      */
     async fetchTrees(searchQuery = "") {
         const url = new URL(this.apiUrl);
-        
+
         // Base condition selecting only fruit or nut trees
         const fruitConditions = FRUIT_KEYWORDS.map(kw => `UPPER(CommonName) LIKE '%${kw}%'`).join(" OR ");
         let whereClause = `(${fruitConditions})`;
@@ -83,7 +73,7 @@ export class DataController {
         //temporary test limit as too many results
         url.searchParams.append("resultRecordCount", "10");
 
-        
+
         // If query is empty, limit results to prevent performance/browser lag issues
         // limit has been pushed back to 10 for testing purposes
         if (searchQuery.trim() === "") {
@@ -96,7 +86,7 @@ export class DataController {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            
+
             if (data.features && Array.isArray(data.features)) {
                 this.trees = data.features
                     .map(feature => {
@@ -108,7 +98,7 @@ export class DataController {
                         const id = props.TreeID || props.OBJECTID || Math.random().toString(36).substr(2, 9);
                         const commonName = props.CommonName || "";
                         const botanicName = props.BotanicName || "";
-                        
+
                         const seasonality = this.determineSeasonality(commonName, botanicName);
                         const stockLevel = this.calculateStockLevel(id);
 

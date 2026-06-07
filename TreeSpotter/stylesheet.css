@@ -215,7 +215,7 @@ aside {
 #map_aside,
 #saved_list_aside,
 #tutorial_aside,
-#about_aside {
+#about_aside, .map_aside_section {
     display: none;
 }
 
@@ -223,9 +223,11 @@ aside {
 #map_aside.active,
 #saved_list_aside.active,
 #tutorial_aside.active,
-#about_aside.active {
+#about_aside.active, .map_aside_section.active {
     display: block;
 }
+
+
 
 /* NAVIGATION */
 
