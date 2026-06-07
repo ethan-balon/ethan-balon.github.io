@@ -159,9 +159,19 @@ video {
 
 /* IMAGES */
 
+#tree-thumbnail {
+    max-width: 13rem;
+    height: auto;
+    display: inline;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 img {
-    /* Images are forced to fit the size of the parent box (element) they are in. */
-    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -250,6 +260,17 @@ nav a {
 
 @media screen and (min-width: 54rem) {
 
+
+    #tree-thumbnail {
+        max-width: 9rem;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
     html,
     body {
         height: 100vh;
@@ -327,6 +348,14 @@ nav a {
 
 
 @media screen and (min-width: 82rem) {
+
+        #tree-thumbnail {
+        max-width: 17rem;
+        height: auto;
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
     body {
         display: grid;

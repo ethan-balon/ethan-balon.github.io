@@ -105,9 +105,7 @@ export class MapView {
         const thumbnailPath = this.getThumbnailPath(tree);
         this.detailsContainer.innerHTML = `
             <div style="margin-bottom: 15px;">
-                <img src="${thumbnailPath}" alt="${tree.commonName} thumbnail" 
-                     style="max-width: 100%; height: auto; display: block; border: 1px solid #ccc; border-radius: 4px;"
-                     onerror="this.style.display='none';">
+                <img src="${thumbnailPath}" alt="${tree.commonName} thumbnail" id="tree-thumbnail">
             </div>
             <p><strong>Tree ID:</strong> ${tree.id}</p>
             <p><strong>Common Name:</strong> ${tree.commonName}</p>
