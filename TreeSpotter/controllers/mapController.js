@@ -5,13 +5,15 @@ export class MapController {
     constructor() {
         this.view = new MapView();
         this.dataController = new DataController();
-        
+
         // Initialize map
         this.map = this.view.initMap();
         this.markers = [];
         this.lastResults = [];
+        this.userLocationMarker = null;
 
         this.bindEvents();
+        this.getUserLocation();
     }
 
     bindEvents() {
@@ -77,5 +79,20 @@ export class MapController {
 
         // Switch view state to details panel
         this.view.showDetails();
+    }
+
+    getUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    this.userLocationMarker = this.view.plotUserLocation(lat, lng, this.map);
+                },
+                (error) => {
+                    console.log("Geolocation lookup failed or permission denied:", error);
+                }
+            );
+        }
     }
 }

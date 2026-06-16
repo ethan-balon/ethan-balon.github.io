@@ -167,4 +167,29 @@ export class MapView {
             map.removeLayer(marker);
         });
     }
+
+    /**
+     * Plots a distinct marker for the user's current location.
+     * @param {number} lat 
+     * @param {number} lng 
+     * @param {L.Map} map 
+     * @returns {L.CircleMarker}
+     */
+    plotUserLocation(lat, lng, map) {
+        const marker = L.circleMarker([lat, lng], {
+            radius: 9,
+            fillColor: '#007BFF',
+            color: '#FFFFFF',
+            weight: 3,
+            opacity: 1,
+            fillOpacity: 0.9
+        }).addTo(map);
+
+        marker.bindTooltip("Your Location", {
+            permanent: false,
+            direction: 'top'
+        });
+
+        return marker;
+    }
 }
