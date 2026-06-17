@@ -13,6 +13,8 @@ export class MapView {
         this.resultsBackButton = document.getElementById('results_back_button');
         this.detailsContainer = document.getElementById('tree_details_container');
         this.detailsBackButton = document.getElementById('details_back_button');
+        this.detailsSaveButton = document.getElementById('details_save_button');
+        this.detailsNavigateButton = document.getElementById('details_navigate_button');
     }
 
     /**

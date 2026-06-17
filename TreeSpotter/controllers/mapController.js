@@ -11,6 +11,7 @@ export class MapController {
         this.markers = [];
         this.lastResults = [];
         this.userLocationMarker = null;
+        this.selectedTree = null;
 
         this.bindEvents();
         this.getUserLocation();
@@ -37,10 +38,31 @@ export class MapController {
 
         if (this.view.detailsBackButton) {
             this.view.detailsBackButton.addEventListener('click', () => {
-                // Clear the single details marker and restore all search result pins
                 this.view.clearMarkers(this.markers, this.map);
                 this.markers = this.view.plotMarkers(this.lastResults, this.map, (tree) => this.showTreeDetails(tree));
                 this.view.showResults();
+            });
+        }
+
+        if (this.view.detailsSaveButton) {
+            this.view.detailsSaveButton.addEventListener('click', () => {
+                alert('PROTOTYPE MESSAGE: Save button pressed, this is a future feature')
+            });
+        }
+
+        if (this.view.detailsNavigateButton) {
+            this.view.detailsNavigateButton.addEventListener('click', () => {
+                if (!this.selectedTree) {
+                    alert('No tree selected.');
+                    return;
+                }
+                const destination = `${this.selectedTree.latitude},${this.selectedTree.longitude}`;
+                alert('You will be directed to Google Maps for navigation, this is a third party service. Continue?')
+                window.open(
+                    `https://www.google.com/maps/dir/?api=1&destination=${destination}`,
+                    "_blank"
+                );
+
             });
         }
     }
@@ -70,6 +92,7 @@ export class MapController {
     }
 
     showTreeDetails(tree) {
+        this.selectedTree = tree;
         // Clear all pins and show only the selected tree on the map
         this.view.clearMarkers(this.markers, this.map);
         this.markers = this.view.plotMarkers([tree], this.map, (t) => this.showTreeDetails(t));
@@ -90,6 +113,7 @@ export class MapController {
                     this.userLocationMarker = this.view.plotUserLocation(lat, lng, this.map);
                 },
                 (error) => {
+                    alert(`TreeSpotter could not retrieve your location because: "${error.message}". The application will continue to run, but the results may be less relevant.`)
                     console.log("Geolocation lookup failed or permission denied:", error);
                 }
             );
