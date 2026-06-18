@@ -31,6 +31,10 @@ export class MapView {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
+        map.once('moveend', () => {
+            map.invalidateSize();
+        });
+
         return map;
     }
 

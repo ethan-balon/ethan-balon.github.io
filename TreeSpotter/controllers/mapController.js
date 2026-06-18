@@ -1,10 +1,12 @@
 import { MapView } from "../views/mapView.js";
 import { DataController } from "./dataController.js";
+import { SavedList } from "../models/savedList.js";
 
 export class MapController {
     constructor() {
         this.view = new MapView();
         this.dataController = new DataController();
+        this.savedList = new SavedList();
 
         // Initialize map
         this.map = this.view.initMap();
@@ -46,7 +48,16 @@ export class MapController {
 
         if (this.view.detailsSaveButton) {
             this.view.detailsSaveButton.addEventListener('click', () => {
-                alert('PROTOTYPE MESSAGE: Save button pressed, this is a future feature')
+                if (!this.selectedTree) {
+                    alert('No tree selected.');
+                    return;
+                }
+                const success = this.savedList.addTree(this.selectedTree);
+                if (success) {
+                    alert(`"${this.selectedTree.commonName}" has been successfully saved to My List.`);
+                } else {
+                    alert(`"${this.selectedTree.commonName}" is already in your saved list.`);
+                }
             });
         }
 
@@ -114,7 +125,6 @@ export class MapController {
                 },
                 (error) => {
                     alert(`TreeSpotter could not retrieve your location because: "${error.message}". The application will continue to run, but the results may be less relevant.`)
-                    console.log("Geolocation lookup failed or permission denied:", error);
                 }
             );
         }

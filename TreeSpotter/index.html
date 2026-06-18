@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="stylesheet.css">
 
     <!-- LEAFLET -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="leaflet/dist/leaflet.css" />
+    <script src="leaflet/dist/leaflet.js"></script>
 </head>
 
 <body>
@@ -22,7 +20,6 @@
             <li><button id="map_button">Map</button></li>
             <li><button id="tutorial_button">Tutorial</button></li>
             <li><button id="saved_list_button">My List</button></li>
-            <li><button id="advanced_options_button">Advanced Options</button></li>
             <li><button id="about_button">About</button></li>
         </ul>
     </nav>
@@ -117,7 +114,24 @@
         </section>
 
         <section id="saved_list_page" class="section">
-            <img src="./media/LIST_PLACEHOLDER.png" alt="Saved list placeholder">
+            <h2>My List</h2>
+            <table id="saved_list">
+                <thead>
+                    <tr>
+                        <th>Tree ID</th>
+                        <th>Name</th>
+                        <th>Seasonality</th>
+                        <th>Stock level</th>
+                        <th>Coordinates</th>
+                        <th>Navigate</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="saved_list_body">
+                    <!-- Dynamic saved trees will be rendered here -->
+                </tbody>
+            </table>
+            
         </section>
 
         <section id="advanced_options_page" class="section">

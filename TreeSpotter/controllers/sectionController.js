@@ -1,6 +1,7 @@
 import { SectionView } from "../views/sectionView.js";
 import { TutorialController } from "./tutorialController.js";
 import { MapController } from "./mapController.js";
+import { SavedListController } from "./savedListController.js";
 
 
 export class sectionController {
@@ -8,6 +9,7 @@ export class sectionController {
         this.SectionView = new SectionView()
         this.tutorialController = new TutorialController()
         this.mapController = new MapController()
+        this.savedListController = new SavedListController()
         const introductionChecker = localStorage.getItem("introductionChecker")
         this.introductionChecker = introductionChecker
         this.infoBarText = this.SectionView.get_infobar()
@@ -52,7 +54,8 @@ export class sectionController {
             this.refreshInfoBar("Click on the video to play the full tutorial, or use the chapters on the left side menu")
         }
         else if (pageName === "saved_list") {
-            this.refreshInfoBar("Type on the search bar to filter the list results")
+            this.refreshInfoBar("Navigate or remove a saved tree on the list below")
+            this.savedListController.loadAndRender()
         }
         else{
             this.refreshInfoBar()
@@ -80,9 +83,9 @@ export class sectionController {
             this.changeScreen("about")
         }
 
-        advancedOptionsButton.onclick = ()=> {
-            this.changeScreen("advanced_options")
-        }
+        // advancedOptionsButton.onclick = ()=> {
+        //     this.changeScreen("advanced_options")
+        // }
 
 
         //BUTTONS ON INTRODUCTION PAGE
