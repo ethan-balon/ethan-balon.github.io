@@ -25,7 +25,9 @@ export class MapController {
             this.view.searchForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
                 const query = this.view.searchInput.value;
+                this.view.infoBar.textContent = `Searching for ${query ? query : "all trees"}..`
                 await this.performSearch(query);
+                this.view.infoBar.textContent = `Showing results for ${query ? query : "all trees"}`
             });
         }
 
@@ -35,6 +37,7 @@ export class MapController {
                 this.view.clearMarkers(this.markers, this.map);
                 this.markers = [];
                 this.view.showSearch();
+                this.view.infoBar.textContent = `Type on the search bar to search for a tree, or press enter to display all trees in your area.`
             });
         }
 

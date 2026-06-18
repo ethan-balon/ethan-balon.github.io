@@ -125,7 +125,7 @@ footer {
 /* COLOUR SCHEME */
 
 header,
-footer {
+footer{
     background-color: #48531a;
     color: #fff;
 }
@@ -134,13 +134,15 @@ main {
     background-color: white;
 }
 
+td {
+    color: white;
+}
 
-
-#blank {
+#blank, td {
     background-color: #48531a;
 }
 
-nav {
+nav, table {
     background-color: #95986b;
 }
 
@@ -186,7 +188,9 @@ nav>ul {
     height: 100%;
 }
 
-
+#About_image {
+    max-width: 100%;
+}
 
 header>img {
     max-height: 4rem;
@@ -197,6 +201,15 @@ header>img {
 aside {
     background-color: #48531a;
     color: white;
+}
+
+/* TABLE */
+table, td {
+    border-color: white;
+}
+
+td {
+    padding: 0.5em;
 }
 
 
@@ -237,6 +250,10 @@ aside {
     display: block;
 }
 
+.hidden {
+    display: none;
+}
+
 
 
 /* NAVIGATION */
@@ -254,6 +271,16 @@ nav a {
 #map {
     height: 32em;
     width: 100%;
+}
+
+#saved_list_page {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
 

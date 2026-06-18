@@ -38,8 +38,8 @@
                     <input id="treetypeinput" type="text" placeholder="Type here to search..">
                     <button type="submit">ENTER</button>
                 </form>
-                <h3>Filters</h3>
-                <form id="filters">
+                <h3 class="hidden">Filters</h3>
+                <form id="filters" class="hidden">
                     <input type="radio" id="summer" name="seasonfilter" value="HTML">
                     <label for="summer">Summer</label><br>
                     <input type="radio" id="autumn" name="seasonfilter" value="CSS">
@@ -85,6 +85,11 @@
         </section>
 
         <section id="about_aside" class="asidesection">
+            <h2>How we use stored data</h2>
+            <p>TreeSpotter collects both your tree search data and your current location if you consent.</p>
+            <p>TreeSpotter saves trees that you have added to "My List" to make it easy to save and look back at your favorite tree locations over time.</p>
+            <p>In addition, TreeSpotter may use your location to provide the most relevant search results in your area. This however is an optional feature and you can choose to opt out from the prompt when you open TreeSpotter for the first time. You can always change your decision in another time by editing TreeSpotter's location access on your web browser's settings.</p>
+            <p>Your data is stored locally on your device and remains private, Your data is never redistributed publicly or online via TreeSpotter.</p>
         </section>
 
     </aside>
@@ -98,7 +103,7 @@
 
     <main>
 
-        <section id="introduction_page" class="section active">
+        <section id="introduction_page" class="section">
             <h1>Welcome!</h1>
             <p>Type on the left search bar to search for a tree, or click enter to display all trees in your area.</p>
             <p>Click the tutorial button to watch a video tutorial to help you learn how to use this app.</p>
@@ -109,7 +114,7 @@
             <button id="introduction_dsa">Don't show again</button>
         </section>
 
-        <section id="map_page" class="section">
+        <section id="map_page" class="section active">
             <div id="map"></div>
         </section>
 
@@ -151,7 +156,7 @@
 
 
         <section id="about_page" class="section">
-            <img src="./media/ABOUT_PLACEHOLDER.png" alt="About placeholder">
+            <img src="./media/ABOUT_PLACEHOLDER.png" alt="About" id="About_image">
         </section>
 
     </main>
