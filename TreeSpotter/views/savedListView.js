@@ -5,12 +5,7 @@ export class SavedListView {
         this.table = document.getElementById("saved_list");
     }
 
-    /**
-     * Renders the saved trees to the table body.
-     * @param {Tree[]} trees 
-     * @param {Function} onNavigate 
-     * @param {Function} onDelete 
-     */
+
     render(trees, onNavigate, onDelete) {
         if (!this.tableBody) return;
         this.tableBody.innerHTML = "";
@@ -23,7 +18,6 @@ export class SavedListView {
         trees.forEach(tree => {
             const tr = document.createElement("tr");
             
-            // Format coordinates to match user's placeholder precision (e.g. 6 decimal places)
             const coordsText = `${tree.latitude.toFixed(6)}, ${tree.longitude.toFixed(6)}`;
 
             tr.innerHTML = `

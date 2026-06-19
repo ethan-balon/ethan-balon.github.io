@@ -7,9 +7,7 @@ export class SavedListController {
         this.view = new SavedListView();
     }
 
-    /**
-     * Loads the saved trees from localStorage and updates the view.
-     */
+
     loadAndRender() {
         const trees = this.model.getTrees();
         this.view.render(
@@ -19,10 +17,6 @@ export class SavedListController {
         );
     }
 
-    /**
-     * Navigates to a tree using Google Maps.
-     * @param {Tree} tree
-     */
     handleNavigate(tree) {
         const destination = `${tree.latitude},${tree.longitude}`;
         const proceed = confirm(`You will be directed to Google Maps for navigation to "${tree.commonName}", this is a third party service. Continue?`);
@@ -34,11 +28,7 @@ export class SavedListController {
         }
     }
 
-    /**
-     * Deletes a saved tree from localStorage.
-     * @param {string|number} id
-     * @param {string} name
-     */
+
     handleDelete(id, name) {
         const proceed = confirm(`Are you sure you want to remove "${name}" from your saved list?`);
         if (proceed) {

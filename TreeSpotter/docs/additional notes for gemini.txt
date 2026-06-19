@@ -1,7 +1,0 @@
-Additional notes for every gemini session to be up to speed with requirements and other useful information i want it to know.
-
-1. Development environment is in TreeSpotter folder ONLY, do NOT access, modify or test any code outside of the TreeSpotter folder, they are for separate projects and the importance of keeping them intact from being modified, altered or compromised cannot be overstressed.
-
-2. the video "DEMOMESA" in the tutorial page, aswell as the DEMOMESA.vtt subtitle file in the media folder are random placeholders for the tutorial video. the current contents in DEMOMESA and DEMOMESA.vtt are not related to the project whatsoever and will be replaced in the future
-
-3. do not do any testing without consent or acknowledgement, I will be doing the testing on a separate place instead as this environment cannot at the moment successfully run localhost

@@ -2,7 +2,7 @@ import { FRUIT_KEYWORDS } from "../controllers/dataController.js";
 
 export class MapView {
     constructor() {
-        // Cache elements
+        //elements are now in the constructor for easier controller development
         this.searchSection = document.getElementById('map_search_section');
         this.resultsSection = document.getElementById('map_results_section');
         this.detailsSection = document.getElementById('map_details_section');
@@ -20,15 +20,11 @@ export class MapView {
         this.infoBar = document.getElementById('infobar_text');
     }
 
-    /**
-     * Initializes and returns the Leaflet Map.
-     * @returns {L.Map}
-     */
+
     initMap() {
-        // Initialize Leaflet map and set its view to Christchurch
+        // Christchurch coordinates
         const map = L.map('map').setView([-43.5320, 172.6362], 13);
 
-        // Load the OpenStreetMap tiles
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -41,9 +37,7 @@ export class MapView {
         return map;
     }
 
-    /**
-     * Switches aside sections.
-     */
+
     showSearch() {
         this.searchSection.classList.add('active');
         this.resultsSection.classList.remove('active');
@@ -62,11 +56,7 @@ export class MapView {
         this.detailsSection.classList.add('active');
     }
 
-    /**
-     * Renders search results to the list.
-     * @param {Tree[]} trees 
-     * @param {Function} onTreeClick 
-     */
+// Renders search results into list
     renderResults(trees, onTreeClick) {
         this.resultsList.innerHTML = '';
         if (trees.length === 0) {
@@ -81,7 +71,6 @@ export class MapView {
             listItem.style.cursor = 'pointer';
             listItem.style.padding = '5px 0';
             
-            // Just outputting names, no complex layout/styling per instruction
             listItem.innerHTML = `<strong>${tree.commonName}</strong> (${tree.botanicName})`;
             
             listItem.addEventListener('click', () => {
@@ -91,11 +80,7 @@ export class MapView {
         });
     }
 
-    /**
-     * Finds matching thumbnail image name for a tree.
-     * @param {Tree} tree 
-     * @returns {string}
-     */
+
     getThumbnailPath(tree) {
         const fullName = `${tree.commonName || ""} ${tree.botanicName || ""}`.toUpperCase();
         // Find first matching fruit keyword
@@ -106,10 +91,7 @@ export class MapView {
         return `media/tree_thumbnails/GENERIC.jpg`;
     }
 
-    /**
-     * Renders details of the selected tree inside the details container.
-     * @param {Tree} tree 
-     */
+// reender details Inside of details container
     renderDetails(tree) {
         const thumbnailPath = this.getThumbnailPath(tree);
         this.detailsContainer.innerHTML = `
@@ -125,13 +107,7 @@ export class MapView {
         `;
     }
 
-    /**
-     * Plots markers on the map.
-     * @param {Tree[]} trees 
-     * @param {L.Map} map 
-     * @param {Function} onMarkerClick 
-     * @returns {L.Marker[]} - The newly created markers
-     */
+
     plotMarkers(trees, map, onMarkerClick) {
         const markers = [];
         const latLngs = [];
@@ -141,7 +117,6 @@ export class MapView {
                 // Plot marker
                 const marker = L.marker([tree.latitude, tree.longitude]).addTo(map);
                 
-                // Add tooltip with the common name
                 marker.bindTooltip(tree.commonName);
                 
                 marker.on('click', () => {
@@ -153,7 +128,7 @@ export class MapView {
             }
         });
 
-        // Fit map bounds to view all markers if there are any
+        // Animation element to fit all tree plot markers
         if (latLngs.length > 0) {
             if (latLngs.length === 1) {
                 map.setView(latLngs[0], 15);
@@ -166,24 +141,14 @@ export class MapView {
         return markers;
     }
 
-    /**
-     * Clears markers from the map.
-     * @param {L.Marker[]} markers 
-     * @param {L.Map} map 
-     */
+
     clearMarkers(markers, map) {
         markers.forEach(marker => {
             map.removeLayer(marker);
         });
     }
 
-    /**
-     * Plots a distinct marker for the user's current location.
-     * @param {number} lat 
-     * @param {number} lng 
-     * @param {L.Map} map 
-     * @returns {L.CircleMarker}
-     */
+// curren location marker
     plotUserLocation(lat, lng, map) {
         const marker = L.circleMarker([lat, lng], {
             radius: 9,

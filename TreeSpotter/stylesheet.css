@@ -1,18 +1,4 @@
-/*
- 
-   !!!!! READ ALL THE COMMENTS IN THIS STYLESHEET !!!!!
 
-   
-   This stylesheet shows a simple layout change from a single-column to two columns
-   when the viewport (window) is wide enough to fit two columns. Notice that the
-   layout code for the single column occurs first and is not in a media query - 
-   this makes the single column the 'default' layout. This is a good approach
-   because older browsers that don't understand media queries can still display
-   the single-column layout. At the bottom of this stylesheet there is a media 
-   query that tests the width of the viewport and contains the grid layout.
-   
-   Check what happens when you change the width of the browser window from very
-   narrow to very wide when you are viewing the web page. */
 
 
 /* RESET */
@@ -400,14 +386,3 @@ table {
 
 }
 
-
-
-
-
-
-/* This is the end of the media query. Note how it is just like a CSS rule,
-      but that it contains other CSS rules. It is the same as an IF statement
-      in programming. When the result of the media query is true, all the CSS
-      inside the media query is applied by the browser. When the result of the
-      media query is false (i.e., a viewport that is narrower than 50rem) the
-      browser ignores all the CSS ruls inside the media query. */

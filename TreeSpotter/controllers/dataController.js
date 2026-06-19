@@ -1,7 +1,7 @@
 import { Tree } from "../models/tree.js";
 
-// Lookup map for seasonality. Currently contains a placeholder "TEST" entry.
-//placeholder changed to apricot as a more realistic placeholder (NOTICE: this is only test data and is not accurate)
+// Lookup map for seasonality.
+//placeholder changed to apricot as a more realistic placeholder
 const SEASONALITY_MAP = {
     "APRICOT": "Summer"
 };
@@ -19,13 +19,7 @@ export class DataController {
         this.apiUrl = "https://gis.ccc.govt.nz/server/rest/services/OpenData/Tree/FeatureServer/0/query";
     }
 
-    /**
-     * Determines seasonality using the SEASONALITY_MAP lookup.
-     * Loops through keys in the mapping dictionary and does a substring check.
-     * @param {string} commonName 
-     * @param {string} botanicName 
-     * @returns {string}
-     */
+
     determineSeasonality(commonName, botanicName) {
         const name = `${commonName || ""} ${botanicName || ""}`.toUpperCase();
         for (const key of Object.keys(SEASONALITY_MAP)) {
@@ -36,32 +30,20 @@ export class DataController {
         return "Unknown";
     }
 
-    /**
-     * Deterministically calculates stock level based on TreeID.
-     * Returns a number between 1 and 15.
-     * @param {number|string} treeId 
-     * @returns {number}
-     */
-    //placeholder as stock level data is currently unfetchable
+
     calculateStockLevel(treeId) {
 
         return "Unknown";
     }
 
-    /**
-     * Fetches tree data from the CCC Open Data FeatureServer.
-     * @param {string} [searchQuery=""] - Optional text to search/filter by name.
-     * @returns {Promise<Tree[]>} - Resolves to the array of Tree models.
-     */
+// Fetches tree data from Christchurch database
     async fetchTrees(searchQuery = "") {
         const url = new URL(this.apiUrl);
 
-        // Base condition selecting only fruit or nut trees
         const fruitConditions = FRUIT_KEYWORDS.map(kw => `UPPER(CommonName) LIKE '%${kw}%'`).join(" OR ");
         let whereClause = `(${fruitConditions})`;
 
         if (searchQuery.trim() !== "") {
-            // Clean single quotes to prevent basic SQL syntax issues from user inputs
             const cleanedQuery = searchQuery.replace(/'/g, "''").toUpperCase();
             whereClause += ` AND (UPPER(CommonName) LIKE '%${cleanedQuery}%' OR UPPER(BotanicName) LIKE '%${cleanedQuery}%')`;
         }
@@ -70,14 +52,13 @@ export class DataController {
         url.searchParams.append("outFields", "*");
         url.searchParams.append("f", "geojson");
 
-        //temporary test limit as too many results
-        url.searchParams.append("resultRecordCount", "10");
+        //temporary result limit for testing
+        url.searchParams.append("resultRecordCount", "50");
 
 
         // If query is empty, limit results to prevent performance/browser lag issues
-        // limit has been pushed back to 10 for testing purposes
         if (searchQuery.trim() === "") {
-            url.searchParams.append("resultRecordCount", "10");
+            url.searchParams.append("resultRecordCount", "50");
         }
 
         try {
@@ -92,7 +73,7 @@ export class DataController {
                     .map(feature => {
                         const props = feature.properties || {};
                         const coords = feature.geometry && feature.geometry.coordinates ? feature.geometry.coordinates : [0, 0];
-                        // GeoJSON coordinates are in [longitude, latitude] format
+
                         const longitude = coords[0];
                         const latitude = coords[1];
                         const id = props.TreeID || props.OBJECTID || Math.random().toString(36).substr(2, 9);
@@ -105,7 +86,6 @@ export class DataController {
                         return new Tree(id, commonName, botanicName, latitude, longitude, seasonality, stockLevel);
                     })
                     .filter(tree => {
-                        // Double check client-side that the common name matches our fruit/nut keywords
                         const upperCommon = tree.commonName.toUpperCase();
                         return FRUIT_KEYWORDS.some(kw => upperCommon.includes(kw));
                     });
@@ -121,10 +101,7 @@ export class DataController {
         return this.trees;
     }
 
-    /**
-     * Gets the currently cached tree listings.
-     * @returns {Tree[]}
-     */
+
     getTrees() {
         return this.trees;
     }

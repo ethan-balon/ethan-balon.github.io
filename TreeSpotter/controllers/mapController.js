@@ -31,7 +31,6 @@ export class MapController {
             });
         }
 
-        // Bind back buttons
         if (this.view.resultsBackButton) {
             this.view.resultsBackButton.addEventListener('click', () => {
                 this.view.clearMarkers(this.markers, this.map);
@@ -83,21 +82,14 @@ export class MapController {
 
     async performSearch(query) {
         try {
-            // Clear existing markers
+
             this.view.clearMarkers(this.markers, this.map);
             this.markers = [];
-
-            // Fetch trees
             const trees = await this.dataController.fetchTrees(query);
             this.lastResults = trees;
-
-            // Render search list results
             this.view.renderResults(trees, (tree) => this.showTreeDetails(tree));
-
-            // Plot markers on the map
             this.markers = this.view.plotMarkers(trees, this.map, (tree) => this.showTreeDetails(tree));
 
-            // Switch view state to results panel
             this.view.showResults();
         } catch (error) {
             console.error("Search failed:", error);
@@ -107,14 +99,9 @@ export class MapController {
 
     showTreeDetails(tree) {
         this.selectedTree = tree;
-        // Clear all pins and show only the selected tree on the map
         this.view.clearMarkers(this.markers, this.map);
         this.markers = this.view.plotMarkers([tree], this.map, (t) => this.showTreeDetails(t));
-
-        // Render detailed details panel
         this.view.renderDetails(tree);
-
-        // Switch view state to details panel
         this.view.showDetails();
     }
 
