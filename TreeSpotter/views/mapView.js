@@ -86,9 +86,9 @@ export class MapView {
         // Find first matching fruit keyword
         const match = FRUIT_KEYWORDS.find(kw => fullName.includes(kw));
         if (match) {
-            return `media/tree_thumbnails/${match}.jpg`;
+            return `https://ethanbalon.link/trees/${match}.webp`;
         }
-        return `media/tree_thumbnails/GENERIC.jpg`;
+        return `https://ethanbalon.link/trees/GENERIC.WebP`;
     }
 
 // reender details Inside of details container

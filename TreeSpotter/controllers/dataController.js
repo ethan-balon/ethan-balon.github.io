@@ -3,7 +3,31 @@ import { Tree } from "../models/tree.js";
 // Lookup map for seasonality.
 //placeholder changed to apricot as a more realistic placeholder
 const SEASONALITY_MAP = {
-    "APRICOT": "Summer"
+    "PLUM": "Summer",
+    "APPLE": "Summer, Autumn",
+    "PEAR": "Summer, Autumn",
+    "WALNUT": "Autumn",
+    "CHESTNUT": "Autumn",
+    "OLIVE": "Autumn, Winter",
+    "PEACH": "Summer",
+    "APRICOT": "Summer",
+    "HAZEL": "Summer, Autumn",
+    "MULBERRY": "Summer",
+    "LOQUAT": "Spring, Summer",
+    "QUINCE": "Autumn",
+    "ALMOND": "Summer, Autumn",
+    "CHERRY": "Summer",
+    "ELDERBERRY": "Summer, Autumn",
+    "FIG": "Summer, Autumn",
+    "FEIJOA": "Autumn",
+    "CITRUS": "Winter, Spring",
+    "LEMON": "Summer, Autumn, Winter, Spring",
+    "ORANGE": "Winter, Spring",
+    "STRAWBERRY TREE": "Autumn",
+    "HONEY LOCUST": "Autumn",
+    "SWEET BAY": "Autumn",
+    "JUNIPER": "Autumn",
+    "MACADAMIA": "Autumn, Winter"
 };
 
 export const FRUIT_KEYWORDS = [
